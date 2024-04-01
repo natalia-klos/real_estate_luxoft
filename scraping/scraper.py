@@ -18,7 +18,6 @@ class ScrapeWithDriver:
         property_data = {}
         page_num = 1
         for i in range(1, max_pages):
-        #while len(property_data) < max_elements:
             self.driver.get(home_page + '?strana=' + str(page_num))
             sleep(1)
 
