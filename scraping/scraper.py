@@ -36,15 +36,15 @@ class ScrapeWithDriver:
                 else:
                     break
             
-            data_for_db = []
-            for title, img_address in property_data.items():
-                dictionary = {'title': title, 'img_address': img_address}
-                data_for_db.append(dictionary)
+        data_for_db = []
+        for title, img_address in property_data.items():
+            dictionary = {'title': title, 'img_address': img_address}
+            data_for_db.append(dictionary)
 
-            for dct in data_for_db:
-                dct['img_address'] = ' '.join(dct['img_address'][:max_pictures])
+        for dct in data_for_db:
+            dct['img_address'] = ' '.join(dct['img_address'][:max_pictures])
 
-            return data_for_db
+        return data_for_db
     
 
 
