@@ -41,7 +41,6 @@ class ScrapeWithDriver:
         for dct in data_for_db:
             dct['img_address'] = ' '.join(dct['img_address'][:max_pictures])
 
-        print('Number of apartments: ', len(data_for_db))
         return data_for_db
     
 
