@@ -16,7 +16,7 @@ class ScrapeWithDriver:
         self.options.add_argument('--disable-dev-shm-usage')
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=self.options)
 
-    def scrape(self, home_page='https://www.sreality.cz/hledani/prodej/byty', max_elements=500, max_pages=100):
+    def scrape(self, home_page='https://www.sreality.cz/hledani/prodej/byty', max_elements=500, max_pages=100, max_pictures=1):
         property_data = {}
         page_num = 1
         for i in range(1, max_pages):
@@ -26,7 +26,7 @@ class ScrapeWithDriver:
 
             soup=BeautifulSoup(self.driver.page_source, 'html.parser')
             property_elements = soup.find_all(class_="property ng-scope")
-            page_num += i
+            page_num += 1
 
             for element in property_elements:
                 if len(property_data) < max_elements:
@@ -41,7 +41,10 @@ class ScrapeWithDriver:
                 dictionary = {'title': title, 'img_address': img_address}
                 data_for_db.append(dictionary)
 
-            return property_data
+            for dct in data_for_db:
+                dct['img_address'] = ' '.join(dct['img_address'][:max_pictures])
+
+            return data_for_db
     
 
 

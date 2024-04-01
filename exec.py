@@ -13,9 +13,6 @@ db.execute("CREATE TABLE flats (id SERIAL PRIMARY KEY, title VARCHAR NOT NULL, i
 db.commit()
 
 statement = """INSERT INTO flats (title, img_address) VALUES (%s, %s)"""
-for d in scraped_data:
-    d['img_address'] = ' '.join(d['img_address'])
-
 for line in scraped_data:
     try:
         print(statement, (line['title'], line['img_address']))
@@ -25,5 +22,4 @@ for line in scraped_data:
 db.commit()
 db.close()
 
-
-app_creation()
+app_creation(scraped_data)
