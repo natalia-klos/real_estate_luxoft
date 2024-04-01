@@ -3,9 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup 
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+
 from time import sleep
 
 class ScrapeWithDriver:
@@ -44,6 +42,7 @@ class ScrapeWithDriver:
         for dct in data_for_db:
             dct['img_address'] = ' '.join(dct['img_address'][:max_pictures])
 
+        print('Number of apartments: ', len(data_for_db))
         return data_for_db
     
 
