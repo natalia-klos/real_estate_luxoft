@@ -42,7 +42,6 @@ class dbConnection:
         try:
             curs.execute(query, args)
         except Exception as ex:
-            self.conn.rollback()
             curs.close()
             raise ex
         return curs   
