@@ -1,0 +1,7 @@
+bs4==0.0.1
+selenium
+webdriver_manager
+psycopg2-binary
+configparser
+Flask
+sqlalchemy

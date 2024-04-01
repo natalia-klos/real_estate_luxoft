@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+</head>
+<body>
+    <h1>500 apartmens for sales in Czechia</h1>
+    {% for item in data %}
+        <h2>{{ item.title }}</h2>
+        <div>
+            {% for img_url in item.img_address.split(' ') %}
+                <img src="{{ img_url }}" alt="Image">
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>
